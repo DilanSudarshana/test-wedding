@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nimali &amp; Dinesh – Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Noto+Serif+Sinhala:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg1:#6d3f55;--bg2:#2b1121;--glow:#ffd9e3;--text:#fff3ea;
+  --paper:#fffaf0;--ink:#5a1424;--muted:#86575a;--gold:#b8861f;--gold2:#e3c070;--rose:#c2305a;--leaf:#41704b;
+  --script:"Great Vibes","Brush Script MT",cursive;--serif:"Cormorant Garamond",Georgia,serif;--sinhala:"Noto Serif Sinhala","Iskoola Pota",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#3d1a2f;--bg2:#10050d}}
+:root[data-theme="dark"]{--bg1:#3d1a2f;--bg2:#10050d}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+html.lock,html.lock body{overflow:hidden}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;color:var(--text);font-family:var(--serif);font-size:1.2rem;line-height:1.6;overflow-x:hidden;
+  background:radial-gradient(ellipse at 50% 30%,var(--bg1),var(--bg2) 75%) fixed}
+/* atmosphere */
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.fx{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.light{position:fixed;width:60vmax;height:60vmax;border-radius:50%;filter:blur(60px);opacity:.35;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,#ff9fbd,transparent 65%);animation:pulse 9s ease-in-out infinite alternate}
+.light.b{right:-20vmax;bottom:-25vmax;background:radial-gradient(circle,#f1c970,transparent 65%);animation-delay:-4s;opacity:.22}
+.light.a{left:-20vmax;top:-25vmax}
+@keyframes pulse{to{transform:scale(1.2);opacity:.5}}
+.petal{position:absolute;top:-30px;left:var(--x);width:var(--s);height:var(--s);animation:fall var(--d) linear var(--dl) infinite;will-change:transform}
+.petal i{display:block;width:100%;height:100%;border-radius:100% 0 100% 0;animation:flutter 2.6s ease-in-out infinite alternate;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.petal.rose i{background:radial-gradient(circle at 30% 30%,#f0708f,#a81c45)}
+.petal.blos i{background:linear-gradient(135deg,#fff,#f7b4c9);border-radius:100% 10% 100% 10%}
+.petal.gold i{background:radial-gradient(circle,#fff0b8,#e0b44f);border-radius:50%;width:45%;height:45%;margin:25%}
+.petal.fl i{background:none;border-radius:0;font-size:var(--s);line-height:1;color:#ffc9d8;text-align:center}
+@keyframes fall{from{transform:translate3d(0,-8vh,0) rotate(0)}to{transform:translate3d(var(--dx),112vh,0) rotate(var(--r))}}
+@keyframes flutter{from{transform:rotateX(0) rotateZ(-18deg)}to{transform:rotateX(70deg) rotateZ(28deg)}}
+.spark{position:absolute;width:var(--s);height:var(--s);left:var(--x);top:var(--y);border-radius:50%;
+  background:radial-gradient(circle,#fff6cf 10%,rgba(240,200,110,.6) 40%,transparent 70%);animation:tw var(--d) ease-in-out var(--dl) infinite}
+@keyframes tw{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}}
+/* envelope stage */
+.stage{position:relative;z-index:3;min-height:100vh;min-height:100svh;display:grid;place-items:center;align-content:center;
+  padding:20vh 1rem 4rem;text-align:center;transition:opacity .8s ease}
+.stage.gone{opacity:0;pointer-events:none}
+.stage h2{font:400 clamp(2.2rem,8vw,3.4rem)/1.15 var(--script);margin:0 0 .3rem;color:var(--text);text-shadow:0 0 24px rgba(255,190,210,.6)}
+.stage p{margin:0 0 2.4rem;font-style:italic;color:#f6d9d9}
+.float{animation:bob 4.5s ease-in-out infinite;perspective:1000px}
+.stage.go .float{animation:none}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.env{--w:min(86vw,370px);--h:calc(var(--w)*.68);position:relative;width:var(--w);height:var(--h);margin:0 auto;cursor:pointer;
+  filter:drop-shadow(0 28px 30px rgba(0,0,0,.45));transition:transform 1s ease,opacity .8s ease}
+.env::before{content:"";position:absolute;inset:-18%;z-index:-1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,210,225,.55),transparent 65%);transition:opacity 1s;opacity:.55}
+.stage.go .env::before{opacity:1}
+.back,.pk,.flap{position:absolute}
+.back{inset:0;border-radius:6px;background:linear-gradient(160deg,#f6d4da,#e6b7c0)}
+.pk{inset:0;border-radius:6px;z-index:3}
+.pk.l{clip-path:polygon(0 0,54% 55%,0 100%);background:linear-gradient(120deg,#fbe5e5,#efc3cb)}
+.pk.r{clip-path:polygon(100% 0,46% 55%,100% 100%);background:linear-gradient(240deg,#fbe5e5,#efc3cb)}
+.pk.b{clip-path:polygon(0 100%,50% 40%,100% 100%);background:linear-gradient(180deg,#f8d9dc,#e9b5bf)}
+.pk.edge{inset:0;clip-path:none;border:1.5px solid rgba(184,134,31,.55);background:none;z-index:6;pointer-events:none}
+.flap{left:0;top:0;width:100%;height:58%;z-index:4;transform-origin:50% 0;clip-path:polygon(0 0,100% 0,50% 100%);
+  background:linear-gradient(180deg,#f9e1e3,#e8b9c3)}
+.flap.in{background:linear-gradient(180deg,#e2aeb9,#f3d3d8)}
+.env.open .flap{animation:flap 1s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes flap{0%{transform:perspective(900px) rotateX(0);z-index:4}49%{z-index:4}50%{z-index:1}100%{transform:perspective(900px) rotateX(180deg);z-index:1}}
+.mini{position:absolute;left:7%;top:8%;width:86%;height:88%;z-index:2;border-radius:4px;padding:1.1rem .8rem;
+  background:linear-gradient(#fffaf0,#f8ecd6);box-shadow:0 0 0 1px rgba(184,134,31,.4);
+  transition:transform 1.1s cubic-bezier(.4,0,.2,1),opacity .6s ease;font:400 1.5rem/1.2 var(--script);color:var(--rose)}
+.mini::after{content:"";display:block;margin-top:.6rem;height:34px;
+  background:repeating-linear-gradient(transparent 0 8px,rgba(184,134,31,.3) 8px 9px)}
+.env.rise .mini{transform:translateY(-70%)}
+.env.leave{transform:translateY(50px) scale(.9);opacity:0}
+.env.leave .mini{transform:translateY(-70%) scale(1.3);opacity:0}
+.seal{position:absolute;left:50%;top:58%;z-index:7;width:58px;height:58px;margin:-29px 0 0 -29px;border:0;border-radius:50%;cursor:pointer;
+  font:400 1.7rem/1 var(--serif);color:#ffe9b8;background:radial-gradient(circle at 35% 30%,#e8557c,#a3153f 60%,#6c0b29);
+  box-shadow:0 4px 10px rgba(0,0,0,.4),inset 0 -3px 6px rgba(0,0,0,.3),0 0 0 3px rgba(233,150,170,.4);animation:beat 2s ease-in-out infinite;transition:opacity .4s}
+.env.open .seal{opacity:0;pointer-events:none}
+@keyframes beat{50%{transform:scale(1.1);box-shadow:0 4px 10px rgba(0,0,0,.4),0 0 26px 6px rgba(255,150,180,.7)}}
+.stage.go .env{animation:nudge .5s ease-in-out}
+@keyframes nudge{25%{transform:rotate(-2.5deg) scale(1.02)}75%{transform:rotate(2.5deg) scale(1.02)}}
+.cta{margin-top:2.6rem;padding:.85rem 2.4rem;font:600 1.2rem var(--serif);color:var(--ink);cursor:pointer;
+  background:linear-gradient(135deg,#f7e2a4,#d9ac47);border:1px solid #fff3c4;border-radius:40px;box-shadow:0 6px 22px rgba(224,180,79,.45);transition:transform .25s,box-shadow .25s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(224,180,79,.65)}
+.stage.go .cta{opacity:0;pointer-events:none;transition:opacity .4s}
+button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* letter */
+.after{position:relative;z-index:3;display:none;padding:2.5rem 1rem 4rem;perspective:1400px}
+.after.show{display:block}
+.letter{position:relative;max-width:640px;margin:0 auto;padding:3.2rem 1.6rem 3.4rem;text-align:center;color:var(--ink);transform-origin:50% 0;
+  background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.8),transparent 40%),
+    repeating-radial-gradient(circle at 70% 60%,rgba(184,134,31,.04) 0 2px,transparent 2px 5px),linear-gradient(#fffaf0,#f8eed9);
+  border:2px solid var(--gold);outline:1px solid var(--gold2);outline-offset:-11px;
+  box-shadow:0 0 60px rgba(255,200,215,.35),0 24px 50px rgba(0,0,0,.45)}
+.after.show .letter{animation:unfold 1.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes unfold{0%{transform:rotateX(-85deg) scaleY(.15);opacity:0;clip-path:inset(0 0 85% 0)}40%{opacity:1}100%{transform:none;opacity:1;clip-path:inset(0)}}
+.co{position:absolute;width:84px;height:84px}
+.co.tl{left:6px;top:6px}.co.tr{right:6px;top:6px;transform:scaleX(-1)}
+.co.bl{left:6px;bottom:6px;transform:scaleY(-1)}.co.br{right:6px;bottom:6px;transform:scale(-1,-1)}
+.hi{font:400 clamp(2.1rem,8vw,3rem)/1.2 var(--script);color:var(--rose);margin:0 0 .6rem}
+.sinhala{font-family:var(--sinhala);color:var(--ink);font-size:1.02rem;line-height:1.9;margin:0}
+.invite{color:var(--muted);font-style:italic;margin:.4rem auto 1.4rem;max-width:34ch}
+h1{margin:0;font:400 clamp(3.4rem,15vw,5.6rem)/1 var(--script);color:var(--ink)}
+h1 .amp{display:block;font-size:.5em;color:var(--gold);line-height:1.2}
+.parents{color:var(--muted);font-size:1.05rem;margin:1.3rem 0 0}
+.rule{border:0;height:14px;margin:1.8rem auto;width:190px;
+  background:linear-gradient(var(--gold),var(--gold)) 0 50%/72px 1px no-repeat,linear-gradient(var(--gold),var(--gold)) 100% 50%/72px 1px no-repeat,
+  radial-gradient(circle,var(--rose) 5px,transparent 6px) 50% 50%/14px 14px no-repeat}
+.date{font-size:1.9rem;font-weight:600;margin:0}
+.date small{display:block;font-size:1.05rem;font-weight:400;font-style:italic;color:var(--muted)}
+.events{display:grid;gap:1.4rem;margin:1.6rem 0 0}
+@media(min-width:560px){.events{grid-template-columns:1fr 1fr}.events section+section{border-left:1px solid var(--gold2)}}
+.events h2{margin:0;font-size:1.5rem;color:var(--leaf)}
+.events p{margin:.1rem 0}.time{font-weight:600;color:var(--rose)}
+.venue{margin:1.8rem 0 0;font-size:1.25rem}
+.count{display:flex;justify-content:center;gap:.8rem;margin:0}
+.count div{min-width:70px;padding:.5rem .3rem;border:1px solid var(--gold2);background:rgba(255,255,255,.5)}
+.count b{display:block;font-size:1.9rem;color:var(--rose);line-height:1.1}.count span{font-size:.95rem;color:var(--muted)}
+.rsvp{display:inline-block;margin-top:1.8rem;padding:.85rem 2.3rem;background:linear-gradient(135deg,#d03f68,#a3153f);color:#fff;text-decoration:none;
+  font:600 1.15rem var(--serif);border:1px solid var(--gold2);border-radius:40px;box-shadow:0 6px 18px rgba(163,21,63,.35);transition:transform .25s,box-shadow .25s}
+.rsvp:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(163,21,63,.5)}
+.rsvp:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.note{color:var(--muted);font-size:1rem;font-style:italic;margin:1rem 0 0}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.petal,.spark{display:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="fc" viewBox="0 0 80 80"><path d="M4 76C4 40 30 8 76 4" fill="none" stroke="#b8861f" stroke-width="1.5"/>
+<g fill="#6f9a74"><ellipse cx="46" cy="11" rx="10" ry="3.6" transform="rotate(-14 46 11)"/><ellipse cx="11" cy="46" rx="10" ry="3.6" transform="rotate(76 11 46)"/></g>
+<g fill="#eba5ba" stroke="#b8861f" stroke-width=".8"><circle cx="30" cy="12" r="6"/><circle cx="12" cy="30" r="6"/><circle cx="19" cy="19" r="10"/></g>
+<circle cx="19" cy="19" r="4" fill="#b8861f"/></symbol></defs></svg>
+
+<div class="light a"></div><div class="light b"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="fx" id="fx" aria-hidden="true"></div>
+
+<section class="stage" id="stage">
+  <h2>A Special Invitation Awaits You</h2>
+  <p>You Have a Special Invitation</p>
+  <div class="float">
+    <div class="env" id="env">
+      <div class="back"></div>
+      <div class="mini">Nimali &amp; Dinesh</div>
+      <div class="pk l"></div><div class="pk r"></div><div class="pk b"></div><div class="pk edge"></div>
+      <div class="flap" id="flap"><div class="flap in" style="inset:0;width:100%;height:100%"></div></div>
+      <button class="seal" id="seal" type="button" aria-label="Break the seal and open the invitation">♥</button>
+    </div>
+  </div>
+  <button class="cta" id="cta" type="button">Open Invitation</button>
+</section>
+
+<main class="after" id="after">
+<article class="letter" id="letter">
+  <svg class="co tl" viewBox="0 0 80 80"><use href="#fc"/></svg><svg class="co tr" viewBox="0 0 80 80"><use href="#fc"/></svg>
+  <svg class="co bl" viewBox="0 0 80 80"><use href="#fc"/></svg><svg class="co br" viewBox="0 0 80 80"><use href="#fc"/></svg>
+  <p class="hi">You Are Cordially Invited</p>
+  <p class="sinhala" lang="si">සුභ මංගල උත්සවයට ඔබ සාදරයෙන් ආරාධිතයි</p>
+  <p class="invite">With the blessings of the Triple Gem, we joyfully invite you to the wedding of</p>
+  <h1>Nimali <span class="amp">&amp;</span> Dinesh</h1>
+  <p class="parents">Daughter of Mr. &amp; Mrs. Perera<br>and son of Mr. &amp; Mrs. Fernando</p>
+  <hr class="rule">
+  <p class="date">Saturday, 20 March 2027<small>Auspicious times have been set by the astrologer</small></p>
+  <div class="events">
+    <section><h2>Poruwa Ceremony</h2><p class="time">8.43 a.m.</p><p>Followed by the wedding breakfast</p></section>
+    <section><h2>Wedding Reception</h2><p class="time">6.30 p.m. onwards</p><p>Dinner and dancing</p></section>
+  </div>
+  <p class="venue">Lotus Grand Ballroom<br>Galle Road, Colombo 03</p>
+  <hr class="rule">
+  <div class="count"><div><b id="d">–</b><span>days</span></div><div><b id="h">–</b><span>hours</span></div><div><b id="m">–</b><span>minutes</span></div></div>
+  <a class="rsvp" href="mailto:rsvp@example.com?subject=RSVP%20-%20Nimali%20%26%20Dinesh">Confirm your attendance</a>
+  <p class="note">Kindly reply by 20 February 2027.</p>
+</article>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,small=innerWidth<640;
+  var $=function(i){return document.getElementById(i)};
+  /* rain */
+  var cv=$("rain"),cx=cv.getContext("2d"),W,H,dr=[],raf;
+  function size(){var r=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*r;cv.height=H*r;cx.setTransform(r,0,0,r,0,0);
+    var n=Math.min(small?70:150,Math.round(W*H/9500));dr=[];
+    for(var i=0;i<n;i++){var z=Math.random();dr.push({x:Math.random()*W,y:Math.random()*H,z:z,l:8+z*22,v:7+z*15,a:.12+z*.35,w:.6+z*1.3})}}
+  function draw(){cx.clearRect(0,0,W,H);
+    for(var i=0;i<dr.length;i++){var d=dr[i];cx.strokeStyle="rgba(235,225,255,"+d.a+")";cx.lineWidth=d.w;cx.beginPath();cx.moveTo(d.x,d.y);cx.lineTo(d.x-d.l*.15,d.y+d.l);cx.stroke();
+      d.y+=d.v;d.x-=d.v*.15;if(d.y>H){d.y=-d.l;d.x=Math.random()*(W+40)}}
+    raf=requestAnimationFrame(draw)}
+  size();addEventListener("resize",size);
+  if(!reduce){draw();document.addEventListener("visibilitychange",function(){cancelAnimationFrame(raf);if(!document.hidden)draw()})}
+  /* petals and sparkles */
+  var fx=$("fx"),types=["rose","blos","blos","rose","gold","fl"],np=small?12:22,i,e,r=Math.random;
+  for(i=0;i<np;i++){e=document.createElement("div");var t=types[i%types.length];e.className="petal "+t;
+    var s=t==="gold"?10+r()*8:t==="fl"?16+r()*10:12+r()*14;
+    e.style.cssText="--x:"+(r()*100)+"%;--s:"+s+"px;--d:"+(11+r()*12)+"s;--dl:-"+(r()*22)+"s;--dx:"+((r()-.4)*160)+"px;--r:"+((r()<.5?-1:1)*(240+r()*400))+"deg";
+    e.innerHTML=t==="fl"?"<i>✿</i>":"<i></i>";fx.appendChild(e)}
+  for(i=0;i<(small?10:18);i++){e=document.createElement("div");e.className="spark";
+    e.style.cssText="--x:"+r()*100+"%;--y:"+r()*100+"%;--s:"+(6+r()*10)+"px;--d:"+(2.5+r()*3)+"s;--dl:-"+r()*5+"s";fx.appendChild(e)}
+  /* open sequence */
+  var st=$("stage"),env=$("env"),af=$("after"),done=false,root=document.documentElement;
+  root.classList.add("lock");
+  function reveal(){af.classList.add("show");st.classList.add("gone");root.classList.remove("lock");scrollTo(0,0);setTimeout(function(){st.style.display="none"},900)}
+  function open(){if(done)return;done=true;st.classList.add("go");
+    if(reduce){env.classList.add("open","rise","leave");reveal();return}
+    setTimeout(function(){env.classList.add("open")},500);
+    setTimeout(function(){env.classList.add("rise")},1500);
+    setTimeout(function(){env.classList.add("leave")},2700);
+    setTimeout(reveal,3200)}
+  env.addEventListener("click",open);$("cta").addEventListener("click",open);
+  /* countdown */
+  var tg=new Date("2027-03-20T08:43:00+05:30").getTime();
+  function p(n){return n<10?"0"+n:""+n}
+  function tick(){var s=Math.max(0,Math.floor((tg-Date.now())/1000));
+    $("d").textContent=Math.floor(s/86400);$("h").textContent=p(Math.floor(s%86400/3600));$("m").textContent=p(Math.floor(s%3600/60))}
+  tick();setInterval(tick,30000);
+})();
+</script>
+</body>
+</html>
